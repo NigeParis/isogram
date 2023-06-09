@@ -6,14 +6,13 @@
 /*   By: 42_Legin <Nige@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 18:37:33 by 42_Legin          #+#    #+#             */
-/*   Updated: 2023/06/09 10:41:27 by 42_Legin         ###   ########.fr       */
+/*   Updated: 2023/06/09 12:30:26 by 42_Legin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <unistd.h>
 #include	"isogram.h"
-
 
 void	ft_test_isogram (char *str);
 
@@ -60,35 +59,23 @@ int	main(void)
 	printf("This function detects if a string is an isogram\n");
 	printf("\n");
 	ft_test_isogram (NULL);
-	printf("\n");
 	ft_test_isogram (Test.str_1);
-	printf("\n");
 	ft_test_isogram (Test.str_2);
-	printf("\n");
 	ft_test_isogram (Test.str_3);
-	printf("\n");
 	ft_test_isogram (Test.str_4);
-	printf("\n");
-	ft_test_isogram (Test.str_5);
-	printf("\n");
-	ft_test_isogram (Test.str_6);
-	printf("\n");
-	ft_test_isogram (Test.str_7);
-	printf("\n");
-	ft_test_isogram (Test.str_8);
-	printf("\n");
-	ft_test_isogram (Test.str_9);
-	printf("\n");
-	ft_test_isogram (Test.str_10);
-	printf("\n");
-	ft_test_isogram (Test.str_11);
-	printf("\n");
-	ft_test_isogram (Test.str_12);
-	printf("\n");
-	ft_test_isogram (Test.str_13);
-	printf("\n");
-	ft_test_isogram (Test.str_14);
 	printf("\n\n");
+	ft_test_isogram (Test.str_5);
+	ft_test_isogram (Test.str_6);
+	ft_test_isogram (Test.str_7);
+	ft_test_isogram (Test.str_8);
+	printf("\n\n");
+	ft_test_isogram (Test.str_9);
+	ft_test_isogram (Test.str_10);
+	ft_test_isogram (Test.str_11);
+	ft_test_isogram (Test.str_12);
+	printf("\n\n");
+	ft_test_isogram (Test.str_13);
+	ft_test_isogram (Test.str_14);
 	return (0);
 }
 
