@@ -7,7 +7,7 @@ SRC_FILE=isogram
 
 .PHONY: run
 run:	$(EXEC)
-		@echo "\nRunning..................."
+		@echo "\nRunning....................."
 		./$(EXEC)
 
 $(EXEC): main.o $(SRC_FILE).o
