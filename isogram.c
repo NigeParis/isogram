@@ -6,7 +6,7 @@
 /*   By: 42_Legin <Nige@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 00:10:34 by 42_Legin          #+#    #+#             */
-/*   Updated: 2023/06/09 09:59:55 by 42_Legin         ###   ########.fr       */
+/*   Updated: 2023/06/09 11:30:04 by 42_Legin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdlib.h>
@@ -33,7 +33,12 @@ bool	is_isogram(const char phrase[])
 	str_len = ft_strlen(phrase);
 	if (!str_len)
 		return (false);
-	ptr_copy_phrase = malloc(sizeof((str_len +1)) * sizeof(char));
+	ptr_copy_phrase = (char *) malloc((str_len +1) * sizeof(char));
+	if (ptr_copy_phrase == NULL)
+	{
+		free(ptr_copy_phrase);
+		return (false);
+	}
 	ft_strcopy(phrase, ptr_copy_phrase, str_len);
 	reponse = ft_is_string_valid_isogram(ptr_copy_phrase, ptr_copy_phrase);
 	free(ptr_copy_phrase);
@@ -52,7 +57,7 @@ static int	ft_strlen(const char *str)
 
 	str_len = 0;
 	if (*str == '\0')
-		return (true);
+		return (false);
 	while (*(str++) != '\0')
 	{
 		str_len++;
