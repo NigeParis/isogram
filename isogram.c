@@ -6,10 +6,11 @@
 /*   By: 42_Legin <Nige@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 00:10:34 by 42_Legin          #+#    #+#             */
-/*   Updated: 2023/06/09 11:30:04 by 42_Legin         ###   ########.fr       */
+/*   Updated: 2023/06/12 10:11:47 by 42_Legin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdlib.h>
+#include <stdio.h>
 #include	"isogram.h"
 
 static int	ft_strlen(const char *str);
@@ -28,12 +29,12 @@ bool	is_isogram(const char phrase[])
 	int		str_len;
 	int		reponse;
 
-	if (phrase == 0)
+	if (phrase == NULL)
 		return (false);
 	str_len = ft_strlen(phrase);
 	if (!str_len)
 		return (false);
-	ptr_copy_phrase = (char *) malloc((str_len +1) * sizeof(char));
+	ptr_copy_phrase = (void *) malloc((str_len + 1) * sizeof(char));
 	if (ptr_copy_phrase == NULL)
 	{
 		free(ptr_copy_phrase);
@@ -57,7 +58,7 @@ static int	ft_strlen(const char *str)
 
 	str_len = 0;
 	if (*str == '\0')
-		return (false);
+		return (!str_len);
 	while (*(str++) != '\0')
 	{
 		str_len++;
@@ -89,13 +90,14 @@ static int	ft_strcopy(const char *src, char *str, int str_len)
 
 static bool	ft_is_string_valid_isogram(char *ptr1_to_str, char *ptr2_to_str)
 {
-	int	result;
+	bool	valid;
 
-	result = 0;
 	while (*ptr1_to_str != '\0')
 	{
-		result = ft_is_compared_char_valid(*ptr1_to_str, ptr2_to_str);
-		if (result < 1)
+		while (*ptr2_to_str != *ptr1_to_str)
+			ptr2_to_str++;
+		valid = ft_is_compared_char_valid(*ptr1_to_str, ptr2_to_str);
+		if (!valid)
 			return (false);
 		ptr1_to_str++;
 	}
@@ -108,23 +110,22 @@ static bool	ft_is_string_valid_isogram(char *ptr1_to_str, char *ptr2_to_str)
 
 static bool	ft_is_compared_char_valid(char c, char *ptr)
 {
-	int	nbr_of_occurance;
+	int		nbr_of_occurance;
+	char	test_char;
 
 	nbr_of_occurance = 0;
+	if ((c == ' ') || (c == '-'))
+		return (true);
 	while (*ptr != '\0')
 	{
-		if ((c == ' ') || (c == '-'))
-		{
-			ptr++;
-			return (true);
-		}
+		test_char = *ptr;
 		if ((c >= 'A') && (c <= 'Z'))
 			c = c + 32;
 		if ((*ptr >= 'A') && (*ptr <= 'Z'))
-			*ptr = *ptr + 32;
+			test_char = *ptr + 32;
 		if ((c < 'a') || (c > 'z'))
 			return (false);
-		if (c == *ptr)
+		if (c == test_char)
 		{
 			nbr_of_occurance++;
 			if (nbr_of_occurance > 1)
