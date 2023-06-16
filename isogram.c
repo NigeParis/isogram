@@ -6,7 +6,7 @@
 /*   By: 42_Legin <Nige@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 00:10:34 by 42_Legin          #+#    #+#             */
-/*   Updated: 2023/06/16 09:13:31 by 42_Legin         ###   ########.fr       */
+/*   Updated: 2023/06/16 09:15:24 by 42_Legin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ bool	is_isogram(const char phrase[])
 /**
 *	Helper functions
 */
-
 
 static bool	_found_double_char(const char *char_in_string, char current_char)
 {
