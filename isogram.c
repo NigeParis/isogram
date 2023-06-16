@@ -6,7 +6,7 @@
 /*   By: 42_Legin <Nige@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 00:10:34 by 42_Legin          #+#    #+#             */
-/*   Updated: 2023/06/16 09:15:24 by 42_Legin         ###   ########.fr       */
+/*   Updated: 2023/06/16 18:31:39 by 42_Legin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ bool	is_isogram(const char phrase[])
 	{
 		while ((*position_in_phrase == ' ') || (*position_in_phrase == '-'))
 			position_in_phrase++;
+		if (*position_in_phrase == '\0')
+			break ;
 		if (!_valid_char(*position_in_phrase))
 			return (false);
 		current_char = _to_lowercase(*position_in_phrase);
@@ -42,10 +44,6 @@ bool	is_isogram(const char phrase[])
 	}
 	return (true);
 }
-
-/**
-*	Helper functions
-*/
 
 static bool	_found_double_char(const char *char_in_string, char current_char)
 {
@@ -66,7 +64,7 @@ static bool	_found_double_char(const char *char_in_string, char current_char)
 }
 
 static bool	_valid_char(char current_char)
-{
+{	
 	current_char = _to_lowercase(current_char);
 	return ((current_char >= 'a') && (current_char <= 'z'));
 }
