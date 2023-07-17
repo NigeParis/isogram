@@ -6,15 +6,15 @@
 /*   By: 42_Legin <Nige@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 00:10:34 by 42_Legin          #+#    #+#             */
-/*   Updated: 2023/07/13 10:35:05 by nige42           ###   ########.fr       */
+/*   Updated: 2023/07/17 11:45:35 by 42_Legin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"isogram.h"
 
-static bool	_valid_char(char current_char);
+static bool	_is_valid_char(char current_char);
 static char	_to_lowercase( char current_char);
-static void	set_to_zero_alphabet_index(int *ptr);
+static void	_to_initialize_alphabet_index(int *ptr);
 
 /**
 *	main function 
@@ -27,17 +27,18 @@ bool	is_isogram(const char phrase[])
 	int			arr_alphabet_index[26];
 	int			index;
 
-	index = 0;
-	if ((!phrase) || (phrase[0] == '\0'))
+	if (!phrase)
 		return (false);
-	set_to_zero_alphabet_index(arr_alphabet_index);
+	if (phrase[0] == '\0')
+		return (true);
+	_to_initialize_alphabet_index(arr_alphabet_index);
 	while (*phrase)
 	{
 		while ((*phrase == ' ') || (*phrase == '-'))
 			phrase++;
 		if (*phrase == '\0')
 			break ;
-		if (!_valid_char(*phrase))
+		if (!_is_valid_char(*phrase))
 			return (false);
 		current_char = _to_lowercase(*phrase);
 		index = (current_char - 97);
@@ -49,7 +50,7 @@ bool	is_isogram(const char phrase[])
 	return (true);
 }
 
-static bool	_valid_char(char current_char)
+static bool	_is_valid_char(char current_char)
 {
 	current_char = _to_lowercase(current_char);
 	return ((current_char >= 'a') && (current_char <= 'z'));
@@ -62,7 +63,7 @@ static char	_to_lowercase( char current_char)
 	return (current_char);
 }
 
-static void	set_to_zero_alphabet_index(int *ptr)
+static void	_to_initialize_alphabet_index(int *ptr)
 {
 	int	alphabet;
 	int	count;
